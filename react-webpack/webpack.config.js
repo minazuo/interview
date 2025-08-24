@@ -2,6 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: 'development',
+    devtool: 'inline-source-map',  //源映射，找到具体报错的文件
+    devServer: {
+        static: './dist',
+    },
     entry: {
         index: './src/index.js',
         print: './src/print.js',
@@ -9,6 +14,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        clean: true, //每次清空dist目录
     },
     module: {
         rules: [
@@ -36,7 +42,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Output Management',
+            title: 'Development',
         }),
     ],
+    optimization: {
+        runtimeChunk: 'single',
+    },
 };

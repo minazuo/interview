@@ -41,3 +41,26 @@ npm install --save-dev csv-loader xml-loader
 
 ##### 配置多入口文件
 <!-- HtmlWebpackPlugin插件会自动生成html文件，并且会自动引入打包后的js文件 -->
+
+##### 清空dist文件夹
+/dist每次构建前清理文件夹
+```
+output: {
+    clean: true,
+},
+```
+##### 源映射 将三个源文件（a.js、b.js和c.js）打包成一个包（bundle.js），而其中一个源文件包含错误，则堆栈跟踪将指向bundle.js
+  devtool: 'inline-source-map',
+
+#####  //监视文件变化
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch", 
+    "build": "webpack"
+  },
+
+#####  //热更新实时重新加载
+  devServer: {
+    static: './dist',
+    hot: true,
+  },
