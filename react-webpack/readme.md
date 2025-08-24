@@ -33,8 +33,11 @@ npm install @babel/core @babel/preset-env @babel/preset-react babel-loader -D
 ##### 配置字体，通过@font-face声明来合并字体文件
 
 ##### xml-loader可以加载xml文件，并且可以解析标签 csv-loader可以加载csv文件，并且可以解析标签
-加载的有用资源是数据，例如 JSON 文件、CSV、TSV 和 XML
-要导入 CSV、TSV 和 XML，可以使用csv-loader和xml-loader
+<!-- 加载的有用资源是数据，例如 JSON 文件、CSV、TSV 和 XML
+要导入 CSV、TSV 和 XML，可以使用csv-loader和xml-loader -->
 ```
 npm install --save-dev csv-loader xml-loader
 ```
+
+##### 配置多入口文件
+<!-- HtmlWebpackPlugin插件会自动生成html文件，并且会自动引入打包后的js文件 -->
