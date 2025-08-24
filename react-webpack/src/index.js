@@ -1,5 +1,5 @@
 import './style.css';
-import Logo from '../image/logo.svg'
+import Logo from '../assets/logo.svg'
 function component() {
   const element = document.createElement('div');
 

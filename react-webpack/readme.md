@@ -14,7 +14,7 @@ A: JSX → Babel编译 → React.createElement() → 虚拟DOM对象 → 真实D
 npx webpack --config webpack.config.js
 ```
 
-##### 配置css 为了import从 JavaScript 模块中获取 CSS 文件
+##### 配置css 为了 JavaScript 模块中 import获取 CSS 文件
 loader是链式调用的，从右向左执行，最后一个加载器返回javascript代码
 能够import './style.css'进入依赖于该样式的文件html
  
@@ -27,5 +27,7 @@ npm install css-loader style-loader -D
 npm install @babel/core @babel/preset-env @babel/preset-react babel-loader -D
 ```
 
-##### 配置html模板
-```
+##### 配置图片 可以在js css在引用图片文件
+
+ 
+##### 配置字体，通过@font-face声明来合并字体文件
