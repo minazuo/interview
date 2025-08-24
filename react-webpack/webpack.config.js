@@ -8,11 +8,16 @@ module.exports = {
         static: './dist',
     },
     entry: {
-        index: './src/index.js',
-        print: './src/print.js',
+        index: {
+            import: './src/index.js',
+            dependOn: 'print',
+        },
+        print: {
+            import: './src/print.js',
+        }
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[contenthash].js', //使用[name]占位符，根据entry的key生成对应的文件名
         path: path.resolve(__dirname, 'dist'),
         clean: true, //每次清空dist目录
         publicPath: '/',
@@ -48,5 +53,8 @@ module.exports = {
     ],
     optimization: {
         runtimeChunk: 'single',
+        splitChunks: {
+            chunks: 'all',
+        },
     },
 };
