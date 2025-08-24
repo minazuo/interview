@@ -71,7 +71,8 @@ output: {
  #### mini-css-extract-plugin：用于将 CSS 从主应用程序中分离出来。
  代码分块：
 1. 多入口文件，dependOn，允许在块之间共享模块，从而减少重复代码。
-2. splitChunks: true, 将公共依赖模块提取到单独chunk中，防止重复打包，优化加载时间。
+2. splitChunks:  将公共依赖模块提取到单独chunk中，防止重复打包，优化加载时间。
+    将第三方库（例如lodash或react）提取到单独的vendor代码块
 3. 动态导入代码块，通过import()语法，将代码分割成多个chunk，按需加载。
 4. 预获取：prefetch，资源在浏览器闲置时加载，提高性能。
    预加载：preload，在父chunk加载时并行加载，提高加载速度。

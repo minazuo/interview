@@ -6,6 +6,7 @@ module.exports = {
     devtool: 'inline-source-map',  //源映射，找到具体报错的文件
     devServer: {
         static: './dist',
+         hot: true,
     },
     entry: {
         index: {
@@ -44,7 +45,19 @@ module.exports = {
                 test: /\.xml$/i,
                 use: ['xml-loader'],
             },
+            {
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                        },
+                    },
+                ],
+            }
         ]
+
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -52,9 +65,16 @@ module.exports = {
         }),
     ],
     optimization: {
-        runtimeChunk: 'single',
+        moduleIds: 'deterministic', //使用确定的模块id，避免因为模块内容变化导致hash变化,比如第三库不变化
+        runtimeChunk: 'single', //将运行时代码拆分成单独的代码块
         splitChunks: {
-            chunks: 'all',
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors', //将第三库单独打包
+                    chunks: 'all',
+                },
+            },
         },
     },
 };
