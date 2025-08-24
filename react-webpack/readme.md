@@ -69,6 +69,10 @@ output: {
   #### 使用 webpack-dev-middleware 将 webpack 处理过的文件发送到服务器
 
  #### mini-css-extract-plugin：用于将 CSS 从主应用程序中分离出来。
+ webpack 优化：
+ 压缩：
+1. 使用TerserPlugin或UglifyJsPlugin等插件，压缩JavaScript代码，减少文件大小。
+2. 使用css-minimizer-webpack-plugin插件，压缩CSS代码，减少文件大小。
  代码分块：
 1. 多入口文件，dependOn，允许在块之间共享模块，从而减少重复代码。
 2. splitChunks:  将公共依赖模块提取到单独chunk中，防止重复打包，优化加载时间。
@@ -76,3 +80,14 @@ output: {
 3. 动态导入代码块，通过import()语法，将代码分割成多个chunk，按需加载。
 4. 预获取：prefetch，资源在浏览器闲置时加载，提高性能。
    预加载：preload，在父chunk加载时并行加载，提高加载速度。
+
+缓存：使用contenthash缓存文件，避免重复下载。
+
+Tree Shaking：移除未使用的代码，减少打包体积。
+1. sideEffects更有效，因为它允许跳过整个模块/文件和完整的子树。
+sideEffects依赖于package.json中的sideEffects字段，或者通过配置文件指定。
+2. usedExports依赖于terser来检测语句中的副作用，
+treeshaking的问题：
+1. CSS 未包含在内：组件渲染时没有样式
+2. 全局 JavaScript 未运行：Polyfill 或全局配置未执行
+3. 跳过初始化代码：注册组件或设置事件监听器的函数永远不会运行

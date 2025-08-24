@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     devtool: 'inline-source-map',  //源映射，找到具体报错的文件
     devServer: {
         static: './dist',
@@ -67,6 +67,7 @@ module.exports = {
     optimization: {
         moduleIds: 'deterministic', //使用确定的模块id，避免因为模块内容变化导致hash变化,比如第三库不变化
         runtimeChunk: 'single', //将运行时代码拆分成单独的代码块
+        usedExports: true,
         splitChunks: {
             cacheGroups: {
                 vendor: {
