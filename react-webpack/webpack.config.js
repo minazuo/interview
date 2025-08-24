@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'production',
@@ -22,6 +23,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true, //每次清空dist目录
         publicPath: '/',
+    },
+    resolve: {
+       
     },
     module: {
         rules: [
@@ -62,6 +66,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Development',
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
         }),
     ],
     optimization: {
