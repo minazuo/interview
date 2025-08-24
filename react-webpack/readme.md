@@ -64,3 +64,6 @@ output: {
     static: './dist',
     hot: true,
   },
+
+
+  #### 使用 webpack-dev-middleware 将 webpack 处理过的文件发送到服务器
